@@ -21,21 +21,27 @@ export default function ComplianceStrip() {
   ];
 
   return (
-    <section className="w-full py-6 bg-white flex justify-center">
+    <section className="w-full py-8 bg-[#E3EAE5] flex justify-center">
 
       <div className="max-w-6xl w-full px-6">
 
         {/* TITLE */}
-        <h2 className="text-3xl md:text-4xl font-semibold text-center text-black">
-          Compliance Frameworks We Support
-        </h2>
+        <div className="text-center">
+
+          <h2 className="title">
+            Compliance Frameworks We Support
+          </h2>
+
+          {/* thick centered underline */}
+          <div className="underline" />
+
+        </div>
 
         {/* SCROLLER */}
-        <div className="mt-5 overflow-hidden strip">
+        <div className="mt-6 overflow-hidden strip">
 
           <div className="track">
 
-            {/* FIRST LOOP */}
             {items.map((item, i) => (
               <div className="item" key={i}>
                 <item.icon size={16} className="icon" />
@@ -43,7 +49,6 @@ export default function ComplianceStrip() {
               </div>
             ))}
 
-            {/* DUPLICATE LOOP (for seamless scroll) */}
             {items.map((item, i) => (
               <div className="item" key={"dup-" + i}>
                 <item.icon size={16} className="icon" />
@@ -56,8 +61,24 @@ export default function ComplianceStrip() {
 
       </div>
 
-      {/* STYLES */}
       <style jsx>{`
+        .title {
+          font-size: 28px;
+          font-weight: 600;
+          color: black;
+          text-align: center;
+        }
+
+        /* 🔥 custom thick centered underline */
+        .underline {
+          width: 140px;
+          height: 4px;
+          background: #14532d; /* dark green */
+          margin: 10px auto 0 auto;
+          border-radius: 10px;
+          box-shadow: 0 2px 10px rgba(20, 83, 45, 0.25);
+        }
+
         .strip {
           position: relative;
           white-space: nowrap;
@@ -67,7 +88,6 @@ export default function ComplianceStrip() {
           display: flex;
           gap: 28px;
           width: max-content;
-
           animation: scroll 18s linear infinite;
         }
 
@@ -78,7 +98,7 @@ export default function ComplianceStrip() {
 
           padding: 10px 14px;
 
-          border: 1px solid rgba(123, 224, 156, 0.5);
+          border: 1px solid rgba(20, 83, 45, 0.25);
           border-radius: 999px;
 
           box-shadow: 0 10px 25px rgba(0,0,0,0.06);

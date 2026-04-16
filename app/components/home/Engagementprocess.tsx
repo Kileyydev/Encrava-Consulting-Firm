@@ -11,84 +11,103 @@ import {
 
 export default function EngagementProcess() {
   return (
-    <section className="w-full py-6 bg-white flex justify-center">
+    <section className="w-full py-8 bg-white flex justify-center">
 
       <div className="max-w-6xl px-6 w-full">
 
         {/* TITLE */}
-        <h2 className="text-3xl md:text-4xl font-semibold text-center text-black">
-          Client Engagement Process
-        </h2>
+        <h2 className="title">Client Engagement Process</h2>
+        <div className="underline" />
 
-        {/* FLOW WRAPPER */}
-        <div className="mt-6 flow">
+        {/* FLOW */}
+        <div className="flow">
 
-          {/* STEP 1 */}
           <div className="step">
             <Search className="icon" />
             <h3>Discovery</h3>
-            <p>We analyze your environment, systems, and threat exposure.</p>
+            <p>We analyze your systems, exposure, and threat environment.</p>
           </div>
 
-          <ArrowRight className="arrow" />
+          <div className="arrowWrap">
+            <ArrowRight className="arrow" />
+          </div>
 
-          {/* STEP 2 */}
           <div className="step">
             <FileText className="icon" />
             <h3>Proposal</h3>
-            <p>Clear scope, timeline, deliverables, and transparent pricing.</p>
+            <p>Clear scope, timelines, deliverables, and transparent pricing.</p>
           </div>
 
-          <ArrowRight className="arrow" />
+          <div className="arrowWrap">
+            <ArrowRight className="arrow" />
+          </div>
 
-          {/* STEP 3 */}
           <div className="step">
             <Settings className="icon" />
             <h3>Execution</h3>
-            <p>Hands-on implementation with continuous progress updates.</p>
+            <p>Hands-on delivery with structured progress updates.</p>
           </div>
 
-          <ArrowRight className="arrow" />
+          <div className="arrowWrap">
+            <ArrowRight className="arrow" />
+          </div>
 
-          {/* STEP 4 */}
           <div className="step">
             <Activity className="icon" />
             <h3>Findings</h3>
-            <p>Detailed technical + executive reports in clear language.</p>
+            <p>Technical + executive reporting in simple language.</p>
           </div>
 
-          <ArrowRight className="arrow" />
+          <div className="arrowWrap">
+            <ArrowRight className="arrow" />
+          </div>
 
-          {/* STEP 5 */}
           <div className="step">
             <ShieldCheck className="icon" />
             <h3>Remediation</h3>
-            <p>Optional support to implement fixes and strengthen security.</p>
+            <p>Optional support to implement fixes and strengthen defenses.</p>
           </div>
 
         </div>
+
       </div>
 
-      {/* STYLES */}
       <style jsx>{`
+
+        .title {
+          text-align: center;
+          font-size: 28px;
+          font-weight: 600;
+          color: black;
+        }
+
+        .underline {
+          width: 120px;
+          height: 4px;
+          background: #14532d;
+          margin: 10px auto 18px auto;
+          border-radius: 10px;
+        }
+
+        /* FLOW ROW */
         .flow {
           display: flex;
-          align-items: center;
+          align-items: stretch;
           justify-content: space-between;
-          gap: 10px;
+          gap: 12px;
 
           margin-top: 10px;
         }
 
+        /* STEP CARD */
         .step {
           flex: 1;
 
           background: white;
-
-          border: 2px solid rgba(123, 224, 156, 0.45);
+          border: 2px solid rgba(20, 83, 45, 0.25);
           border-radius: 18px;
 
-          box-shadow: 0 14px 40px rgba(0,0,0,0.08);
+          box-shadow: 0 16px 45px rgba(0,0,0,0.10);
 
           padding: 14px;
 
@@ -96,7 +115,7 @@ export default function EngagementProcess() {
           flex-direction: column;
           gap: 6px;
 
-          min-height: 120px;
+          min-height: 130px;
         }
 
         .icon {
@@ -115,12 +134,19 @@ export default function EngagementProcess() {
           line-height: 1.4;
         }
 
-        .arrow {
-          color: #7BE09C;
-          flex-shrink: 0;
+        /* 🔥 FIXED ARROW CONTAINER */
+        .arrowWrap {
+          display: flex;
+          align-items: center;   /* vertical center */
+          justify-content: center;
         }
 
-        /* MOBILE — STACKED FLOW */
+        .arrow {
+          color: #14532d;
+          filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+        }
+
+        /* MOBILE */
         @media (max-width: 768px) {
           .flow {
             flex-direction: column;
@@ -129,9 +155,13 @@ export default function EngagementProcess() {
 
           .arrow {
             transform: rotate(90deg);
-            margin: 6px 0;
+          }
+
+          .arrowWrap {
+            padding: 6px 0;
           }
         }
+
       `}</style>
 
     </section>
