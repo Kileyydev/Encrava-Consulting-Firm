@@ -85,7 +85,7 @@ export default function Footer() {
 
       <style jsx>{`
         .footer {
-          background: #7BE09C;
+          background: #166B5F;
 
           /* 🔥 KEY FIX: remove vertical waste */
           padding: 24px 0 18px 0;
