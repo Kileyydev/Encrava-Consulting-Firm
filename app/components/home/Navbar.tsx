@@ -95,7 +95,7 @@ export default function TopNavBar() {
 
                   <Link
                     href="/products"
-                    className="block px-4 py-2 text-[13px] text-black hover:bg-[#7BE09C]/20">
+                    className="block px-4 py-2 text-[13px] text-black hover:bg-[#7BE09C]/20"
                     onClick={() => setProductOpen(false)}
                   >
                     📦 All Products
