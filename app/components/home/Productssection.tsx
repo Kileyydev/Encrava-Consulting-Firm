@@ -268,7 +268,7 @@ export default function ProductsSection() {
         .switch {
           margin-top: 6px;
 
-          background: #ffe0f0;
+          background: transparent;
           border: none;
 
           color: #b34e6b;
