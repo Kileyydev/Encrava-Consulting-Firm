@@ -26,7 +26,7 @@ export default function TopNavBar() {
     { name: "About Us", icon: Info, href: "/about" },
     { name: "Contact Us", icon: Mail, href: "/contact" },
   ];
-  
+
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (
@@ -98,7 +98,7 @@ export default function TopNavBar() {
                     className="block px-4 py-2 text-[13px] text-black hover:bg-[#7BE09C]/20"
                     onClick={() => setProductOpen(false)}
                   >
-                    📦 All Products
+                    Products
                   </Link>
                   <div className="border-t border-black/10 my-1"></div>
                   {/* Shield Link */}
@@ -107,7 +107,7 @@ export default function TopNavBar() {
                     className="block px-4 py-2 text-[13px] text-black hover:bg-[#7BE09C]/20"
                     onClick={() => setProductOpen(false)}
                   >
-                   🛡️ Encrava Shield
+                    Encrava Shield
                   </Link>
                  {/* Intel Link */}
                   <Link
@@ -115,7 +115,7 @@ export default function TopNavBar() {
                     className="block px-4 py-2 text-[13px] text-black hover:bg-[#7BE09C]/20"
                     onClick={() => setProductOpen(false)}
                   >
-                    🕵️‍♂️ Encrava Intel
+                     Encrava Intel
                   </Link>
                 </div>
               )}
