@@ -124,6 +124,7 @@ export default function Footer() {
           font-size: 13px;
           font-weight: 700;
           margin-bottom: 8px;
+          color: white;
         }
 
         a {
@@ -138,12 +139,13 @@ export default function Footer() {
           gap: 8px;
           font-size: 12.5px;
           margin-bottom: 5px;
+          color: white;
         }
 
         /* 🔥 FIX: divider spacing reduced */
         .divider {
           height: 1px;
-          background: white;
+          background: black;
           margin: 14px 0 8px 0;
         }
 
@@ -153,6 +155,7 @@ export default function Footer() {
           font-size: 12px;
           padding: 0;
           margin: 0;
+          color: white;
         }
 
         .floating {
