@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { Radar, Shield, CheckCircle2, ArrowRight } from "lucide-react";
 import Footer from "../components/home/Footer"; 
+import TopNavBar from "../components/home/Navbar"; 
 
 export default function ProductsLandingPage() {
   return (
