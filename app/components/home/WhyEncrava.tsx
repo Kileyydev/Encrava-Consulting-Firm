@@ -171,7 +171,7 @@ export default function WhyChooseEncrava() {
 
           border-radius: 999px;
 
-          background: #7BE09C;
+          background: #166B5F;
 
           box-shadow: 0 0 12px rgba(123, 224, 156, 0.7);
 

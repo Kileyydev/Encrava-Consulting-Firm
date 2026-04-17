@@ -202,7 +202,7 @@ export default function IndustriesSection() {
         .dots {
           font-size: 30px;
           font-weight: 900;
-          color: #7BE09C;
+          color: #166B5F;
           background: transparent;
           border: none;
           cursor: pointer;

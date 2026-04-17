@@ -140,7 +140,7 @@ export default function ProductsSection() {
         .underline {
           width: 120px;
           height: 4px;
-          background: #;
+          background: #ffe0f0;
           margin: 6px auto 0 auto;
           border-radius: 10px;
         }
@@ -152,7 +152,7 @@ export default function ProductsSection() {
           border-radius: 30px 30px 0 0;
           border: 1px solid rgba(0,0,0,0.12);
 
-          background: #E3EAE5;
+          background: #fff;
 
           box-shadow: 0 20px 50px rgba(0,0,0,0.08);
 

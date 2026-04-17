@@ -105,7 +105,7 @@ export default function EngagementProcess() {
 
           background: white;
 
-          border: 2px solid rgba(20, 83, 45, 0.25);
+          border: 1px solid rgba(20, 83, 45, 0.25);
           border-radius: 18px;
 
           box-shadow: 0 16px 45px rgba(0,0,0,0.10);

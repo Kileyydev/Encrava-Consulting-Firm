@@ -91,16 +91,9 @@ export default function TopNavBar() {
               </button>
 
               {productOpen && (
-                <div className="absolute top-9 left-0 bg-white border border-black/10 shadow-lg w-48 py-1 rounded-lg">
+                <div className="absolute top-9 left-0 bg-[#166b5f]/20 border border-black/10 shadow-lg w-48 py-1 rounded-lg">
 
-                  <Link
-                    href="/products"
-                    className="block px-4 py-2 text-[13px] text-black hover:bg-[#7BE09C]/20"
-                    onClick={() => setProductOpen(false)}
-                  >
-                    Products
-                  </Link>
-                  <div className="border-t border-black/10 my-1"></div>
+                
                   {/* Shield Link */}
                   <Link
                     href="/products/shield"

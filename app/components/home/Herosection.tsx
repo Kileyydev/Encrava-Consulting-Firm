@@ -8,7 +8,7 @@ export default function HeroSection() {
       <div className="absolute inset-0">
 
         {/* GLOW ORBS */}
-        <div className="absolute -top-50 -left-50 w-162.5 h-162.5 bg-[#7BE09C]/30 rounded-full blur-3xl shadow-2xl animate-pulse" />
+        <div className="absolute -top-50 -left-50 w-162.5 h-162.5 bg-[#166B5F]/30 rounded-full blur-3xl shadow-2xl animate-pulse" />
         <div className="absolute -bottom-50 -right-50 w-162.5 h-162.5 bg-black/10 rounded-full blur-3xl shadow-2xl animate-pulse" />
 
         {/* GRID */}

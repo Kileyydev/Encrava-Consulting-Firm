@@ -2,19 +2,50 @@
 
 import {
   Shield,
-  Search,
   Smartphone,
   FileCheck2,
   AlertTriangle,
   GraduationCap,
-  Lock,
   Activity,
+  ArrowRight,
 } from "lucide-react";
 
 export default function ServicesSection() {
-  return (
-    <section className="w-full py-8 bg-white flex justify-center">
+  const services = [
+    {
+      icon: Shield,
+      title: "Cybersecurity Risk Assessment",
+      desc: "Comprehensive evaluation of your security posture aligned with KDPA 2019, CBK guidelines, and global standards like ISO 27001 and NIST.",
+    },
+    {
+      icon: Activity,
+      title: "Penetration Testing (VAPT)",
+      desc: "Simulated real-world attacks on web, mobile, APIs, and infrastructure including M-Pesa integrations and USSD systems.",
+    },
+    {
+      icon: FileCheck2,
+      title: "KDPA Compliance Programme",
+      desc: "End-to-end data protection compliance including ODPC registration, DPIAs, policy frameworks, and audit readiness.",
+    },
+    {
+      icon: Smartphone,
+      title: "Mobile & Fintech Security",
+      desc: "Security for mobile money platforms, fintech apps, API gateways, and SIM-swap threat mitigation.",
+    },
+    {
+      icon: AlertTriangle,
+      title: "Incident Response & Retainer",
+      desc: "24/7 breach response support, playbooks, tabletop exercises, and rapid containment for active cyber incidents.",
+    },
+    {
+      icon: GraduationCap,
+      title: "Security Awareness Training",
+      desc: "Employee-focused training in English & Kiswahili covering phishing, social engineering, and fraud prevention.",
+    },
+  ];
 
+  return (
+    <section className="w-full py-10 bg-white flex justify-center">
       <div className="max-w-6xl px-6 w-full">
 
         {/* TITLE */}
@@ -23,63 +54,39 @@ export default function ServicesSection() {
           <div className="underline" />
         </div>
 
-        {/* MAIN CARD */}
-        <div className="mt-6 services-card">
+        {/* CARD */}
+        <div className="services-card">
+          <div className="grid">
+            {services.map((service, i) => {
+              const Icon = service.icon;
 
-          <div className="grid grid-cols-1 md:grid-cols-4 relative">
+              return (
+                <div key={i} className="cell">
 
-            {/* GREEN PIPES */}
-            <div className="pipe pipe-1" />
-            <div className="pipe pipe-2" />
-            <div className="pipe pipe-3" />
+                  {/* HORIZONTAL LAYOUT */}
+                  <div className="service-row">
 
-            {/* COLUMN 1 */}
-            <div className="col">
-              <div className="title">
-                <Search className="icon" />
-                Assessment & Testing
-              </div>
+                    {/* ICON LEFT */}
+                    <div className="icon-box">
+                      <Icon size={22} />
+                    </div>
 
-              <div className="item"><Shield size={14} /> Risk Assessment</div>
-              <div className="item"><Activity size={14} /> Penetration Testing</div>
-            </div>
+                    {/* TEXT RIGHT */}
+                    <div className="text-box">
+                      <h3>{service.title}</h3>
+                      <p>{service.desc}</p>
 
-            {/* COLUMN 2 */}
-            <div className="col">
-              <div className="title">
-                <Smartphone className="icon" />
-                Fintech Security
-              </div>
+                      <button className="cta">
+                        Explore Service <ArrowRight size={14} />
+                      </button>
+                    </div>
 
-              <div className="item"><Lock size={14} /> Mobile & App Security</div>
-              <div className="item"><AlertTriangle size={14} /> API & SIM-Swap Defense</div>
-            </div>
+                  </div>
 
-            {/* COLUMN 3 */}
-            <div className="col">
-              <div className="title">
-                <FileCheck2 className="icon" />
-                Compliance
-              </div>
-
-              <div className="item">KDPA Programme</div>
-              <div className="item">ODPC Alignment</div>
-              <div className="item">ISO / NIST / PCI-DSS</div>
-            </div>
-
-            {/* COLUMN 4 */}
-            <div className="col">
-              <div className="title">
-                <GraduationCap className="icon" />
-                Response & Training
-              </div>
-
-              <div className="item"><AlertTriangle size={14} /> Incident Response</div>
-              <div className="item"><GraduationCap size={14} /> Security Training</div>
-            </div>
-
+                </div>
+              );
+            })}
           </div>
-
         </div>
 
       </div>
@@ -87,11 +94,14 @@ export default function ServicesSection() {
       {/* STYLES */}
       <style jsx>{`
 
-        /* 🔥 TITLE SYSTEM (REUSABLE STYLE NOW) */
+        /* TITLE (REDUCED SPACE HERE) */
         .title-wrap {
           display: flex;
           flex-direction: column;
           align-items: center;
+
+          /* ↓ reduced from 20px */
+          margin-bottom: 10px;
         }
 
         .title-wrap h2 {
@@ -101,90 +111,99 @@ export default function ServicesSection() {
         }
 
         .underline {
-          width: 80px;
+          width: 90px;
           height: 5px;
-
-          background: #ffe0f0; /* DARK GREEN */
-
-          margin-top: 10px;
-
+          background: #ffe0f0;
+          margin-top: 8px;
           border-radius: 999px;
         }
 
         /* CARD */
         .services-card {
           background: white;
+          border: 1px solid rgba(0,0,0,0.1);
+          border-radius: 26px 26px 0 0;
+          box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+          overflow: hidden;
+        }
 
-          border: 2px solid rgba(0,0,0,0.12);
+        .grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+        }
 
-          border-radius: 30px 30px 0 0;
-
-          box-shadow: 0 20px 55px rgba(0, 0, 0, 0.10);
-
+        .cell {
           padding: 28px;
-
-          position: relative;
+          border-right: 1px solid rgba(0,0,0,0.08);
+          border-bottom: 1px solid rgba(0,0,0,0.08);
         }
 
-        .col {
-          padding: 10px 18px;
+        .cell:nth-child(3n) {
+          border-right: none;
         }
 
-        .title {
+        .cell:nth-last-child(-n+3) {
+          border-bottom: none;
+        }
+
+        /* HORIZONTAL LAYOUT */
+        .service-row {
           display: flex;
-          align-items: center;
-          gap: 8px;
+          gap: 14px;
+          align-items: flex-start;
+        }
 
-          font-weight: 600;
-          font-size: 14px;
-
+        .icon-box {
+          flex-shrink: 0;
           color: black;
-
-          margin-bottom: 14px;
+          margin-top: 2px;
         }
 
-        .icon {
-          color: #ffe0f0;
+        .text-box h3 {
+          font-size: 16px;
+          font-weight: 600;
+          color: #0f172a;
+          margin-bottom: 6px;
         }
 
-        .item {
-          font-size: 12.5px;
-          color: rgba(0,0,0,0.7);
+        .text-box p {
+          font-size: 13px;
+          color: rgba(0,0,0,0.65);
+          line-height: 1.5;
+          margin-bottom: 12px;
+        }
 
-          margin-top: 8px;
-
+        .cta {
+          font-size: 12px;
+          font-weight: 600;
+          color: #14532d;
+          background: transparent;
+          border: none;
           display: flex;
           align-items: center;
           gap: 6px;
+          cursor: pointer;
         }
 
-        /* 🔥 PIPES (TALL + GLOWY) */
-        .pipe {
-          position: absolute;
-
-          top: 8%;
-          bottom: 8%;
-
-          width: 2px;
-
-          background: #7BE09C;
-
-          box-shadow: 0 0 18px rgba(123, 224, 156, 0.7);
+        .cta:hover {
+          opacity: 0.7;
         }
 
-        .pipe-1 { left: 25%; }
-        .pipe-2 { left: 50%; }
-        .pipe-3 { left: 75%; }
+        @media (max-width: 900px) {
+          .grid {
+            grid-template-columns: 1fr;
+          }
 
-        /* MOBILE */
-        @media (max-width: 768px) {
-          .pipe {
-            display: none;
+          .cell {
+            border-right: none !important;
+          }
+
+          .cell:not(:last-child) {
+            border-bottom: 1px solid rgba(0,0,0,0.08);
           }
         }
 
       `}</style>
-
     </section>
   );
 }
