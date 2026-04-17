@@ -143,7 +143,7 @@ export default function Footer() {
         /* 🔥 FIX: divider spacing reduced */
         .divider {
           height: 1px;
-          background: rgba(0,0,0,0.18);
+          background: white;
           margin: 14px 0 8px 0;
         }
 
