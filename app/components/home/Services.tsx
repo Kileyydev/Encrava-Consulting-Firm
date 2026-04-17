@@ -144,12 +144,12 @@ export default function ServicesSection() {
         }
 
         .icon {
-          color: #7BE09C;
+          color: #ffe0f0;
         }
 
         .item {
           font-size: 12.5px;
-          color: #ffe0f0;
+          color: rgba(0,0,0,0.7);
 
           margin-top: 8px;
 
