@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowRight, Shield, Radar } from "lucide-react";
+import Link from "next/link";
 
 export default function CTASection() {
   return (
