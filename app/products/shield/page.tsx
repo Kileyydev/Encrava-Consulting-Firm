@@ -1,8 +1,8 @@
 // app/products/shield/page.tsx
 import Link from "next/link";
 import { Shield, CheckCircle2, Mail, Brain, Zap, Bell, RefreshCw, Users, ArrowLeft } from "lucide-react";
-import Footer from "../components/home/Footer"; 
-import TopNavBar from "../components/home/Navbar"; 
+import Footer from "../../components/home/Footer"; 
+import TopNavBar from "../../components/home/Navbar"; 
 
 export default function ShieldPage() {
   return (
