@@ -90,7 +90,7 @@ export default function TopNavBar() {
                 <ChevronDown size={14} />
               </Link>
 
-                <div className="absolute top-9 left-0 bg-[#166b5f]/20 border border-black/10 shadow-lg w-48 py-1 rounded-lg">
+                <div className="absolute top-9 left-0 bg-[#166b5f]/20 border border-black/10 shadow-lg w-48 py-1 rounded-lg py-2 opacity-0 invisible pointer-events-none group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto transition-all duration-200">
                   {/* Shield Link */}
                   <Link
                     href="/products/shield"
@@ -186,7 +186,7 @@ export default function TopNavBar() {
                       setProductOpen(false);
                     }}
                   >
-                    📦 All Products
+                   Products
                   </Link>
                     <Link
                     href="/products/shield"
