@@ -80,7 +80,7 @@ export default function TopNavBar() {
             })}
 
             {/* PRODUCTS (NOW AFTER SERVICES) */}
-            <div className="relative">
+            <div className="relative flex items-center gap-0 ">
               <Link
                 href="/products"
                 className="flex items-center gap-2 text-[13px] font-normal text-black hover:opacity-60 transition"
