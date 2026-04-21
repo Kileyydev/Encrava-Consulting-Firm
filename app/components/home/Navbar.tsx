@@ -83,7 +83,7 @@ export default function TopNavBar() {
             <div className="relative">
               <Link
                 href="/products"
-                className="flex items-center gap-1 text-[13px] font-normal text-black hover:opacity-60 transition"
+                className="flex items-center gap-2 text-[13px] font-normal text-black hover:opacity-60 transition"
               >
                 <Boxes size={16} />
                 Products
@@ -91,15 +91,15 @@ export default function TopNavBar() {
 
               <button
                 onClick={() => setProductOpen(!productOpen)}
-                className="ml-1 p-0.5 text-black hover:opacity-60 transition"
+                className="flex items-center justify-center text-black hover:opacity-60 transition pl-0.5"
                 aria-label="Products dropdown"
               >
-                <ChevronDown size={14} />
+                <ChevronDown size={14} className={productOpen ? "rotate-180 transition-transform" : "transition-transform"} />
               </button>
 
               {/* Dropdown Menu - ONLY Shield and Intel */}
               {productOpen && (
-                <div className="absolute top-9 left-0 bg-[#166b5f]/20 border border-black/10 shadow-lg w-48 py-1 rounded-lg ">
+                <div className="absolute top-7 left-0 bg-[#166b5f]/20 border border-black/10 shadow-lg w-48 py-1 rounded-lg ">
                   {/* Shield Link */}
                   <Link
                     href="/products/shield"
@@ -210,7 +210,7 @@ export default function TopNavBar() {
                         setProductOpen(false);
                       }}
                     >
-                      🛡️ Encrava Shield
+                       Encrava Shield
                     </Link>
                     <Link
                       href="/products/intel"
@@ -220,7 +220,7 @@ export default function TopNavBar() {
                         setProductOpen(false);
                       }}
                     >
-                      🕵️‍♂️ Encrava Intel
+                       Encrava Intel
                     </Link>
                   </div>
                 )}
