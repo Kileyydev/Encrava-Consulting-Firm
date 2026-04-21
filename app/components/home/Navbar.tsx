@@ -182,7 +182,6 @@ export default function TopNavBar() {
                 <ChevronDown size={14} className={`transition-transform ${productOpen ? "rotate-180" : ""}`} />
               </Link>
 
-              {productOpen && (
                 <div className="ml-6 flex flex-col gap-2">
                     <Link
                     href="/products/shield"
