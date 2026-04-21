@@ -90,15 +90,11 @@ export default function TopNavBar() {
                 <ChevronDown size={14} />
               </Link>
 
-              {productOpen && (
                 <div className="absolute top-9 left-0 bg-[#166b5f]/20 border border-black/10 shadow-lg w-48 py-1 rounded-lg">
-
-                
                   {/* Shield Link */}
                   <Link
                     href="/products/shield"
                     className="block px-4 py-2 text-[13px] text-black hover:bg-[#7BE09C]/20"
-                    onClick={() => setProductOpen(false)}
                   >
                     Encrava Shield
                   </Link>
@@ -106,13 +102,11 @@ export default function TopNavBar() {
                   <Link
                     href="/products/intel"
                     className="block px-4 py-2 text-[13px] text-black hover:bg-[#7BE09C]/20"
-                    onClick={() => setProductOpen(false)}
                   >
                      Encrava Intel
                   </Link>
                 </div>
-              )}
-            </div>
+              </div>
 
             {/* Remaining links */}
             {links.slice(2).map((item) => {
@@ -173,16 +167,27 @@ export default function TopNavBar() {
               })}
 
               {/* PRODUCTS */}
-              <Link
-                href="/products"
+              <button
+                onClick={() => setProductOpen(!productOpen)}
                 className="flex items-center gap-2 text-[13px] text-black font-normal w-full text-left"
               >
                 <Boxes size={16} />
                 Products
                 <ChevronDown size={14} className={`transition-transform ${productOpen ? "rotate-180" : ""}`} />
-              </Link>
+              </button>
 
+              {productOpen && (
                 <div className="ml-6 flex flex-col gap-2">
+                  <Link
+                    href="/products"
+                    className="px-3 py-2 text-[13px] text-black hover:bg-[#7BE09C]/20 rounded"
+                    onClick={() => {
+                      setMobileOpen(false);
+                      setProductOpen(false);
+                    }}
+                  >
+                    📦 All Products
+                  </Link>
                     <Link
                     href="/products/shield"
                     className="px-3 py-2 text-[13px] text-black hover:bg-[#7BE09C]/20 rounded"
