@@ -80,7 +80,11 @@ export default function TopNavBar() {
             })}
 
             {/* PRODUCTS (NOW AFTER SERVICES) */}
-            <div className="relative">
+            <div 
+              className="relative"
+              onMouseEnter={() => {}}
+              onMouseLeave={() => {}}
+            >
               <Link
                 href="/products"
                 className="flex items-center gap-1 text-[13px] font-normal text-black hover:opacity-60 transition"
@@ -90,7 +94,25 @@ export default function TopNavBar() {
                 <ChevronDown size={14} />
               </Link>
 
-                <div className="absolute top-9 left-0 bg-[#166b5f]/20 border border-black/10 shadow-lg w-48 py-1 rounded-lg hidden hover:block group-hover:block" style={{ display: 'none' }}>
+                <div 
+                  className="absolute top-9 left-0 bg-[#166b5f]/20 border border-black/10 shadow-lg w-48 py-1 rounded-lg hidden hover:block group-hover:block" style={{ display: 'none' }}
+                  style={{ 
+                    opacity: 0, 
+                    visibility: 'hidden', 
+                    transition: 'opacity 0.2s, visibility 0.2s',
+                    pointerEvents: 'none'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.opacity = '1';
+                    e.currentTarget.style.visibility = 'visible';
+                    e.currentTarget.style.pointerEvents = 'auto';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.opacity = '0';
+                    e.currentTarget.style.visibility = 'hidden';
+                    e.currentTarget.style.pointerEvents = 'none';
+                  }}
+                >
                   {/* Shield Link */}
                   <Link
                     href="/products/shield"
