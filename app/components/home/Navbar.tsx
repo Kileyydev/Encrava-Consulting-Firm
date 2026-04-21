@@ -80,43 +80,31 @@ export default function TopNavBar() {
             })}
 
             {/* PRODUCTS (NOW AFTER SERVICES) */}
-            <div 
-              className="relative"
-              onMouseEnter={() => {}}
-              onMouseLeave={() => {}}
-            >
+            <div className="relative">
               <Link
                 href="/products"
                 className="flex items-center gap-1 text-[13px] font-normal text-black hover:opacity-60 transition"
               >
                 <Boxes size={16} />
                 Products
-                <ChevronDown size={14} />
               </Link>
 
-                <div 
-                  className="absolute top-9 left-0 bg-[#166b5f]/20 border border-black/10 shadow-lg w-48 py-1 rounded-lg hidden hover:block group-hover:block" style={{ display: 'none' }}
-                  style={{ 
-                    opacity: 0, 
-                    visibility: 'hidden', 
-                    transition: 'opacity 0.2s, visibility 0.2s',
-                    pointerEvents: 'none'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.opacity = '1';
-                    e.currentTarget.style.visibility = 'visible';
-                    e.currentTarget.style.pointerEvents = 'auto';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.opacity = '0';
-                    e.currentTarget.style.visibility = 'hidden';
-                    e.currentTarget.style.pointerEvents = 'none';
-                  }}
-                >
+              <button
+                onClick={() => setProductOpen(!productOpen)}
+                className="ml-1 p-0.5 text-black hover:opacity-60 transition"
+                aria-label="Products dropdown"
+              >
+                <ChevronDown size={14} />
+              </button>
+
+              {/* Dropdown Menu - ONLY Shield and Intel */}
+              {productOpen && (
+                <div className="absolute top-9 left-0 bg-[#166b5f]/20 border border-black/10 shadow-lg w-48 py-1 rounded-lg ">
                   {/* Shield Link */}
                   <Link
                     href="/products/shield"
                     className="block px-4 py-2 text-[13px] text-black hover:bg-[#7BE09C]/20"
+                    onClick={() => setProductOpen(false)}
                   >
                     Encrava Shield
                   </Link>
@@ -124,10 +112,13 @@ export default function TopNavBar() {
                   <Link
                     href="/products/intel"
                     className="block px-4 py-2 text-[13px] text-black hover:bg-[#7BE09C]/20"
+                    onClick={() => setProductOpen(false)}                  
                   >
+                    
                      Encrava Intel
                   </Link>
                 </div>
+               )}
               </div>
 
             {/* Remaining links */}
@@ -188,50 +179,52 @@ export default function TopNavBar() {
                 );
               })}
 
-              {/* PRODUCTS */}
-              <button
-                onClick={() => setProductOpen(!productOpen)}
-                className="flex items-center gap-2 text-[13px] text-black font-normal w-full text-left"
-              >
-                <Boxes size={16} />
-                Products
-                <ChevronDown size={14} className={`transition-transform ${productOpen ? "rotate-180" : ""}`} />
-              </button>
+              {/* PRODUCTS SECTION IN MOBILE */}
+              <div className="flex flex-col">
+                {/* Products Link (no arrow in mobile - just text) */}
+                <Link
+                  href="/products"
+                  className="flex items-center gap-2 text-[13px] text-black font-normal py-1"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  <Boxes size={16} />
+                  Products
+                </Link>
+                
+                {/* Dropdown Arrow Button for mobile */}
+                <button
+                  onClick={() => setProductOpen(!productOpen)}
+                  className="flex items-center gap-1 text-[13px] text-black font-normal mt-1 ml-6"
+                >
+                  <ChevronDown size={14} className={`transition-transform ${productOpen ? "rotate-180" : ""}`} />
+                  {productOpen ? "Hide products" : "Show products"}
+                </button>
 
-              {productOpen && (
-                <div className="ml-6 flex flex-col gap-2">
-                  <Link
-                    href="/products"
-                    className="px-3 py-2 text-[13px] text-black hover:bg-[#7BE09C]/20 rounded"
-                    onClick={() => {
-                      setMobileOpen(false);
-                      setProductOpen(false);
-                    }}
-                  >
-                   Products
-                  </Link>
+                {productOpen && (
+                  <div className="ml-6 mt-2 flex flex-col gap-2">
                     <Link
-                    href="/products/shield"
-                    className="px-3 py-2 text-[13px] text-black hover:bg-[#7BE09C]/20 rounded"
-                    onClick={() => {
-                      setMobileOpen(false);
-                      setProductOpen(false);
-                    }}
-                  >
-                    Encrava Shield
-                  </Link>
-                  <Link
-                    href="/products/intel"
-                    className="px-3 py-2 text-[13px] text-black hover:bg-[#7BE09C]/20 rounded"
-                    onClick={() => {
-                      setMobileOpen(false);
-                      setProductOpen(false);
-                    }}
-                  >
-                    Encrava Intel
-                  </Link>
-                </div>
-              )}
+                      href="/products/shield"
+                      className="px-3 py-2 text-[13px] text-black hover:bg-[#7BE09C]/20 rounded"
+                      onClick={() => {
+                        setMobileOpen(false);
+                        setProductOpen(false);
+                      }}
+                    >
+                      🛡️ Encrava Shield
+                    </Link>
+                    <Link
+                      href="/products/intel"
+                      className="px-3 py-2 text-[13px] text-black hover:bg-[#7BE09C]/20 rounded"
+                      onClick={() => {
+                        setMobileOpen(false);
+                        setProductOpen(false);
+                      }}
+                    >
+                      🕵️‍♂️ Encrava Intel
+                    </Link>
+                  </div>
+                )}
+              </div>
 
               {/* CTA */}
               <Link
