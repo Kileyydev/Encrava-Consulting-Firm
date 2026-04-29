@@ -2,57 +2,45 @@
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden bg-white shadow-inner">
+    <section className="relative min-h-[92vh] flex items-center justify-center overflow-visible bg-black">
 
       {/* ================= BACKGROUND ================= */}
       <div className="absolute inset-0">
-
-        {/* GLOW ORBS */}
-        <div className="absolute -top-50 -left-50 w-162.5 h-162.5 bg-[#166B5F]/30 rounded-full blur-3xl shadow-2xl animate-pulse" />
-        <div className="absolute -bottom-50 -right-50 w-162.5 h-162.5 bg-black/10 rounded-full blur-3xl shadow-2xl animate-pulse" />
-
-        {/* GRID */}
         <div className="grid-overlay" />
+        <div className="global-glow" />
+      </div>
 
-        {/* FLOATING NODES */}
-        <div className="nodes">
-          {Array.from({ length: 18 }).map((_, i) => (
-            <span key={i} className="node" />
-          ))}
-        </div>
+      {/* ================= SERVER IMAGE (STATIC + PULLED UP) ================= */}
+      <div className="absolute left-1/2 -translate-x-1/2 bottom-[-110px] z-10 pointer-events-none">
+        
+        {/* GREEN BASE GLOW */}
+        <div className="bottom-glow" />
 
+        <img
+          src="/images/herosection/server.png"
+          className="w-[520px] md:w-[820px] lg:w-[980px] opacity-100 scale-105"
+        />
       </div>
 
       {/* ================= CONTENT ================= */}
-      <div className="relative z-10 max-w-5xl px-6 text-center">
+      <div className="relative z-30 max-w-5xl px-6 text-center">
 
-        {/* HEADLINE */}
         <h1 className="hero-title">
           Africa’s Cyber Threats Are Unique. <br />
           So Is Our Protection.
         </h1>
 
-        {/* 🔥 UNDERLINE ACCENT */}
         <div className="underline" />
 
-        {/* SUBTEXT */}
         <p className="hero-sub">
           Encrava delivers expert cybersecurity consulting and AI-powered security products
           built for the African market — protecting mobile money platforms, fintech innovators,
           government systems, and enterprises across the continent.
         </p>
 
-        {/* CTA */}
         <div className="cta">
-
-          <button className="primary-btn">
-            Book Free Consultation
-          </button>
-
-          <button className="secondary-btn">
-            Explore Products
-          </button>
-
+          <button className="primary-btn">Book Free Consultation</button>
+          <button className="secondary-btn">Explore Products</button>
         </div>
 
       </div>
@@ -60,12 +48,10 @@ export default function HeroSection() {
       {/* ================= STYLES ================= */}
       <style jsx>{`
 
-        /* TITLE */
         .hero-title {
           font-size: 44px;
           font-weight: 600;
-          color: black;
-          line-height: 1.2;
+          color: white;
         }
 
         @media (min-width: 768px) {
@@ -74,152 +60,78 @@ export default function HeroSection() {
           }
         }
 
-        /* 🔥 UNDERLINE SYSTEM */
         .underline {
           width: 110px;
           height: 6px;
-
-          background: #ffe0f0;
-
-          margin: 16px auto 0 auto;
-
+          background: #7BE09C;
+          margin: 16px auto;
           border-radius: 999px;
+          box-shadow: 0 0 22px rgba(123,224,156,0.9);
         }
 
-        /* SUBTEXT */
         .hero-sub {
-          margin-top: 20px;
-
-          font-size: 15px;
-          color: rgba(0,0,0,0.7);
-
+          color: rgba(255,255,255,0.78);
           max-width: 720px;
-          margin-left: auto;
-          margin-right: auto;
-
-          line-height: 1.6;
+          margin: auto;
         }
 
-        /* CTA */
         .cta {
           margin-top: 28px;
-
           display: flex;
-          flex-direction: column;
           gap: 12px;
-
-          align-items: center;
-        }
-
-        @media (min-width: 768px) {
-          .cta {
-            flex-direction: row;
-            justify-content: center;
-          }
+          justify-content: center;
         }
 
         .primary-btn {
-          padding: 12px 22px;
-
           background: #166b5f;
           color: white;
-
-          font-size: 13px;
-          font-weight: 600;
-
+          padding: 12px 22px;
           border-radius: 10px;
-
-          box-shadow: 0 12px 30px rgba(123, 224, 156, 0.4);
-
-          transition: all 0.25s ease;
-        }
-
-        .primary-btn:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 16px 40px rgba(123, 224, 156, 0.5);
+          box-shadow: 0 0 20px rgba(22,107,95,0.35);
         }
 
         .secondary-btn {
+          border: 1px solid rgba(255,255,255,0.2);
           padding: 12px 22px;
-
-          border: 1px solid rgba(0,0,0,0.2);
-
-          font-size: 13px;
-          font-weight: 500;
-
           border-radius: 10px;
-
-          background: white;
-
-          box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-
-          transition: all 0.25s ease;
-        }
-
-        .secondary-btn:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+          color: white;
+          backdrop-filter: blur(10px);
         }
 
         /* GRID */
         .grid-overlay {
           position: absolute;
           inset: 0;
-
           background-image:
-            linear-gradient(to right, rgba(0,0,0,0.12) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(0,0,0,0.12) 1px, transparent 1px);
-
+            linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px);
           background-size: 70px 70px;
-
-          opacity: 0.7;
-
-          animation: gridMove 22s linear infinite;
-
-          box-shadow: inset 0 0 140px rgba(123, 224, 156, 0.18);
+          z-index: 0;
         }
 
-        @keyframes gridMove {
-          0% { transform: translateY(0px); }
-          100% { transform: translateY(90px); }
-        }
-
-        /* NODES */
-        .nodes {
+        /* GLOBAL LIGHT (BRIGHT CYBER GLOW) */
+        .global-glow {
           position: absolute;
           inset: 0;
+          background: radial-gradient(
+            circle at 50% 30%,
+            rgba(123,224,156,0.35),
+            transparent 60%
+          );
+          z-index: 2;
+          filter: blur(1px);
         }
 
-        .node {
+        /* SERVER GLOW (STATIC IMPACT) */
+        .bottom-glow {
           position: absolute;
-          width: 10px;
-          height: 10px;
-          border-radius: 999px;
-
-          background: #7BE09C;
-
-          box-shadow: 0 0 14px rgba(123, 224, 156, 0.7);
-
-          animation: float 5s infinite ease-in-out;
-        }
-
-        .node:nth-child(odd) {
-          background: rgba(0,0,0,0.2);
-          box-shadow: 0 0 10px rgba(0,0,0,0.2);
-        }
-
-        /* POSITIONS */
-        .node:nth-child(1) { top: 10%; left: 20%; }
-        .node:nth-child(2) { top: 30%; left: 75%; }
-        .node:nth-child(3) { top: 50%; left: 40%; }
-        .node:nth-child(4) { top: 70%; left: 15%; }
-        .node:nth-child(5) { top: 80%; left: 85%; }
-        .node:nth-child(6) { top: 45%; left: 60%; }
-
-        @keyframes float {
-          0% { transform: translate(0,0) scale(1); opacity: 0.5; }
-          50% { transform: translate(30px,-30px) scale(1.5); opacity: 1; }
-          100% { transform: translate(0,0) scale(1); opacity: 0.5; }
+          width: 560px;
+          height: 240px;
+          background: rgba(123,224,156,0.55);
+          filter: blur(130px);
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: -1;
         }
 
       `}</style>

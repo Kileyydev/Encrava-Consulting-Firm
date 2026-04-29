@@ -16,6 +16,8 @@ import {
 export default function TopNavBar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [productOpen, setProductOpen] = useState(false);
+
+  const [visible, setVisible] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   const wrapperRef = useRef<HTMLDivElement | null>(null);
@@ -29,9 +31,24 @@ export default function TopNavBar() {
   ];
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 40);
+    const reveal = () => setVisible(true);
+
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 40);
+      reveal();
+    };
+
+    const handleMove = () => reveal();
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("mousemove", handleMove);
+    window.addEventListener("touchstart", handleMove);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("mousemove", handleMove);
+      window.removeEventListener("touchstart", handleMove);
+    };
   }, []);
 
   useEffect(() => {
@@ -49,13 +66,26 @@ export default function TopNavBar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // 🔥 NEW: underline style
+  const linkStyle =
+    "relative flex items-center gap-2 text-[14px] transition after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-[#166b5f] after:transition-all after:duration-300 hover:after:w-full";
+
   return (
     <header
       ref={wrapperRef}
-      className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-6 py-4"
-    >
+      className={`
+        fixed top-0 left-0 w-full z-50
+        flex items-center justify-between px-6 py-4
+        transition-all duration-500 ease-out
 
-      {/* 🔥 LEFT: LOGO (OUTSIDE CARD) */}
+        ${
+          visible
+            ? "translate-y-0 opacity-100"
+            : "-translate-y-full opacity-0 pointer-events-none"
+        }
+      `}
+    >
+      {/* LEFT: LOGO */}
       <Link href="/" className="shrink-0">
         <Image
           src="/images/logos/logo.png"
@@ -67,32 +97,20 @@ export default function TopNavBar() {
         />
       </Link>
 
-      {/* 🔥 CENTER: GLASS NAV (ONLY MENUS) */}
+      {/* CENTER: GLASS NAV (ALWAYS GLASS NOW) */}
       <div
-        className={`
-          transition-all duration-500
+        className="
+          backdrop-blur-xl bg-white/70 border border-black/10 shadow-lg
           flex items-center justify-center
-          gap-8
-          px-10 py-6
-          rounded-full
-          ${
-            scrolled
-              ? "backdrop-blur-xl bg-white/70 border border-black/10 shadow-lg"
-              : "bg-transparent"
-          }
-        `}
+          gap-8 px-10 py-6 rounded-full
+          transition-all duration-500
+        "
       >
-
         <nav className="hidden md:flex items-center gap-8 whitespace-nowrap">
-
           {links.slice(0, 2).map((item) => {
             const Icon = item.icon;
             return (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="flex items-center gap-2 text-[14px] hover:text-[#166b5f] transition"
-              >
+              <Link key={item.name} href={item.href} className={linkStyle}>
                 <Icon size={16} />
                 {item.name}
               </Link>
@@ -101,10 +119,7 @@ export default function TopNavBar() {
 
           {/* PRODUCTS */}
           <div className="relative flex items-center">
-            <Link
-              href="/products"
-              className="flex items-center gap-2 text-[14px] hover:text-[#166b5f] transition"
-            >
+            <Link href="/products" className={linkStyle}>
               <Boxes size={16} />
               Products
             </Link>
@@ -141,21 +156,16 @@ export default function TopNavBar() {
           {links.slice(2).map((item) => {
             const Icon = item.icon;
             return (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="flex items-center gap-2 text-[14px] hover:text-[#166b5f] transition"
-              >
+              <Link key={item.name} href={item.href} className={linkStyle}>
                 <Icon size={16} />
                 {item.name}
               </Link>
             );
           })}
-
         </nav>
       </div>
 
-      {/* 🔥 RIGHT: CTA (OUTSIDE CARD) */}
+      {/* RIGHT CTA */}
       <Link
         href="/consultation"
         className="hidden md:block px-6 py-2 text-[13px] font-medium text-white bg-[#166b5f] rounded-full shadow-md hover:bg-[#0f5c52] transition"
@@ -163,7 +173,7 @@ export default function TopNavBar() {
         Book Consultation
       </Link>
 
-      {/* MOBILE */}
+      {/* MOBILE BUTTON */}
       <button
         onClick={() => setMobileOpen(!mobileOpen)}
         className="md:hidden text-xl"
@@ -175,7 +185,6 @@ export default function TopNavBar() {
       {mobileOpen && (
         <div className="absolute top-20 left-4 right-4 bg-white/90 backdrop-blur-xl border border-black/10 shadow-xl rounded-2xl p-6">
           <div className="flex flex-col gap-4">
-
             {links.map((item) => {
               const Icon = item.icon;
               return (
@@ -198,7 +207,6 @@ export default function TopNavBar() {
             >
               Book Consultation
             </Link>
-
           </div>
         </div>
       )}
